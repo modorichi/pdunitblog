@@ -1,5 +1,6 @@
 <template>
   <main v-if="blog" class="mx-auto max-w-4xl">
+    <UBreadcrumb :items="items" class="mb-4" />
     <article class="space-y-8">
       <UCard>
         <div class="space-y-5">
@@ -17,24 +18,15 @@
             {{ blog.title }}
           </h1>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <UButton
-              v-if="blog.author"
-              :to="`/authors/${blog.author.id}`"
-              color="neutral"
-              variant="ghost"
-              size="sm"
-              class="px-0"
-            >
-              <UAvatar :src="blog.author.image?.url" :alt="blog.author.name" size="xs" />
+          <div class="flex flex-wrap items-center gap-6">
+            <UButton v-if="blog.author" :to="`/authors/${blog.author.id}`" color="neutral" variant="ghost" size="sm" class="px-0 leading-none">
+              <UAvatar :src="blog.author.image?.url" :alt="blog.author.name" size="xl" loading="lazy" />
               {{ blog.author.name }}
             </UButton>
           </div>
 
           <div v-if="blog.tags?.length" class="flex flex-wrap gap-2">
-            <UBadge v-for="tag in blog.tags" :key="tag.id" color="primary" variant="subtle" :to="`/tags/${tag.id}`">
-              #{{ tag.name }}
-            </UBadge>
+            <UBadge v-for="tag in blog.tags" :key="tag.id" color="primary" variant="subtle" :to="`/tags/${tag.id}`">#{{ tag.name }}</UBadge>
           </div>
         </div>
       </UCard>
@@ -48,6 +40,18 @@
 
 <script setup lang="ts">
 import hljs from 'highlight.js';
+import type { BreadcrumbItem } from '@nuxt/ui';
+
+const items = ref<BreadcrumbItem[]>([
+  {
+    label: 'Blog',
+    icon: 'i-lucide-box',
+    to: '/blogs/',
+  },
+  {
+    label: 'Blog Detail',
+  },
+]);
 
 const route = useRoute();
 const blogStore = useBlogStore();

@@ -86,8 +86,9 @@ const teamsItems = computed<DropdownMenuItem[][]>(() => {
 function getItems(state: 'collapsed' | 'expanded') {
   return [
     {
-      label: 'Activity',
-      icon: 'i-lucide-square-activity',
+      label: 'Blog',
+      icon: 'i-lucide-house',
+      to: '/blogs/',
     },
     {
       label: 'Settings',
