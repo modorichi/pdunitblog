@@ -20,6 +20,4 @@ const blogStore = useBlogStore();
 
 await blogStore.fetchBlogs();
 await blogStore.fetchCategories();
-
-console.log('blogStore.categories' + JSON.stringify(blogStore.categories));
 </script>
