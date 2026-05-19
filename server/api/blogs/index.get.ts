@@ -17,12 +17,21 @@ export default defineEventHandler(async () => {
     });
   }
 
-  const client = createClient({
-    serviceDomain: config.public.microcmsServiceDomain,
-    apiKey: config.microcmsApiKey,
-  });
+  try {
+    const client = createClient({
+      serviceDomain: config.public.microcmsServiceDomain,
+      apiKey: config.microcmsApiKey,
+    });
 
-  return await client.get({
-    endpoint: 'blogs',
-  });
+    return await client.get({
+      endpoint: 'blogs',
+    });
+  } catch (error: any) {
+    console.error('microCMS error:', error);
+
+    throw createError({
+      statusCode: error?.statusCode || 500,
+      statusMessage: error?.message || error?.response?.data?.message || 'microCMS request failed',
+    });
+  }
 });
