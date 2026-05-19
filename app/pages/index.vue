@@ -1,0 +1,1 @@
+<template><p>Welcome to the index!</p></template>

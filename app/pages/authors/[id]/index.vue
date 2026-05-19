@@ -1,0 +1,3 @@
+<template>
+  <AuthorPage />
+</template>

@@ -1,0 +1,6 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "ts-node": {
+    "transpileOnly": true
+  }
+}

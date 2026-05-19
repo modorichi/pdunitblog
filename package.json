@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build --dotenv ~/dev/prj/nuxt/secrets/pdunit-blog/.env",
+    "dev": "nuxt dev --dotenv ~/dev/prj/nuxt/secrets/pdunit-blog/.env",
+    "generate": "nuxt generate --dotenv ~/dev/prj/nuxt/secrets/pdunit-blog/.env",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/ui": "^4.7.1",
+    "@pinia/nuxt": "^0.11.3",
+    "axios": "^1.16.1",
+    "eslint": "^10.4.0",
+    "highlight.js": "^11.11.1",
+    "microcms-js-sdk": "^3.4.0",
+    "nuxt": "^4.4.5",
+    "pinia": "^3.0.4",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0"
+  }
+}
