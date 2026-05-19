@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   experimental: {
     viteEnvironmentApi: true,
   },
-  ssr: false,
+  ssr: true,
   runtimeConfig: {
     microcmsApiKey: process.env.NUXT_MICROCMS_API_KEY,
     public: {
