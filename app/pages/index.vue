@@ -1,1 +1,3 @@
-<template><p>Welcome to the index!</p></template>
+<template>
+  <UButton @click="navigateTo('/blogs/')">ブログトップへ</UButton>
+</template>
