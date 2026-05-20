@@ -155,5 +155,22 @@ export const useBlogStore = defineStore('blog', {
         this.loading = false;
       }
     },
+
+    async searchBlogs(q: string) {
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const data = await $fetch<BlogResponse>('/api/blogs', {
+          query: q ? { q } : undefined,
+        });
+        this.blogs = data.contents;
+      } catch (error) {
+        this.error = 'ブログの検索に失敗しました';
+        console.error(error);
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 });
