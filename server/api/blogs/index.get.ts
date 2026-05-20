@@ -1,7 +1,9 @@
 import { createClient } from 'microcms-js-sdk';
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
+  const query = getQuery(event);
+  const q = typeof query.q === 'string' ? query.q : undefined;
 
   if (!config.public.microcmsServiceDomain) {
     throw createError({
@@ -25,6 +27,7 @@ export default defineEventHandler(async () => {
 
     return await client.get({
       endpoint: 'blogs',
+      queries: q ? { q } : undefined,
     });
   } catch (error: any) {
     console.error('microCMS error:', error);
